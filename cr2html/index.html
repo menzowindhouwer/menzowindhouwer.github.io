@@ -12,7 +12,7 @@
                 var cr = "https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/"+(id.startsWith("clarin.eu:cr1:p_")?"profiles":"components")+"/"+id+"/xml";
                 
                 SaxonJS.transform({
-                    "stylesheetLocation": //"https://raw.githubusercontent.com/menzowindhouwer/small-cmd-tools/master/cr2html.sef.json","cr2html.sef.json",
+                    "stylesheetLocation": "https://raw.githubusercontent.com/menzowindhouwer/small-cmd-tools/master/cr2html.sef.json",
                     "sourceLocation": cr,
                     "destination": "replaceBody",
                     "logLevel": 2
