@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>CR2HTML</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="./lib/SaxonJS2.rt.js"><!--keep alive//--></script>
+        <script>
+            function doIt() {
+                console.log(SaxonJS.getProcessorInfo().productName + " " +
+                SaxonJS.getProcessorInfo().productVersion);
+                var id = document.getElementById("id").value;
+                var cr = "https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/"+(id.startsWith("clarin.eu:cr1:p_")?"profiles":"components")+"/"+id+"/xml";
+                
+                SaxonJS.transform({
+                    "stylesheetLocation": //"https://raw.githubusercontent.com/menzowindhouwer/small-cmd-tools/master/cr2html.sef.json","cr2html.sef.json",
+                    "sourceLocation": cr,
+                    "destination": "replaceBody",
+                    "logLevel": 2
+                },
+                "async");
+            }</script>
+    </head>
+    <body>
+        <h1 id="title">CR2HTML</h1>
+        <p id="body">
+            <label for="id">CMD profile or component ID</label>
+            <input id="id" type="text"/>
+            <button onclick="doIt()">to HTML</button>
+        </p>
+        <div>NOTE: big profiles/components do take some time ...</div>
+    </body>
+</html>
