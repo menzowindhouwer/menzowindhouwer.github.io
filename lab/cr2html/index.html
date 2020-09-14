@@ -20,7 +20,7 @@
                 "async");
             }</script>
     </head>
-    <body>
+<body onload="if (window.location.hash) then {document.getElementById("id").value = window.location.hash}">
         <h1 id="title">CR2HTML</h1>
         <p id="body">
             <label for="id">CMD profile or component ID</label>
