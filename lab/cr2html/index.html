@@ -6,6 +6,8 @@
         <script src="../lib/SaxonJS2.rt.js"><!--keep alive//--></script>
         <script>
             function doIt() {
+                document.getElementById('doit').disabled = true;
+                document.getElementById('loader').style.display = "block";
                 console.log(SaxonJS.getProcessorInfo().productName + " " +
                 SaxonJS.getProcessorInfo().productVersion);
                 var id = document.getElementById("id").value;
@@ -28,14 +30,37 @@
                     doIt();
                 }
             }</script>
+            <style>
+                .loader {
+                  border: 16px solid #f3f3f3;
+                  border-radius: 50%;
+                  border-top: 16px solid #3498db;
+                  width: 120px;
+                  height: 120px;
+                  -webkit-animation: spin 2s linear infinite; /* Safari */
+                  animation: spin 2s linear infinite;
+                }
+                
+                /* Safari */
+                @-webkit-keyframes spin {
+                  0% { -webkit-transform: rotate(0deg); }
+                  100% { -webkit-transform: rotate(360deg); }
+                }
+                
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+            </style>
     </head>
 <body onload="load()">
         <h1 id="title">CR2HTML</h1>
         <p id="body">
             <label for="id">CMD profile or component ID</label>
             <input id="id" type="text"/>
-            <button onclick="doIt()">to HTML</button>
+            <button id="doit" onclick="doIt()">to HTML</button>
         </p>
         <div>NOTE: big profiles/components do take some time ...</div>
+        <div id='loader'class="loader" style="display:none;"></div>
     </body>
 </html>
