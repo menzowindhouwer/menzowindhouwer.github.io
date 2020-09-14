@@ -18,9 +18,17 @@
                     "logLevel": 2
                 },
                 "async");
+            }
+            function load() {
+                if (window.location.hash) {
+                    var id = window.location.hash.substring(1);
+                    console.log('id['+id+']');
+                    document.getElementById('id').value = id;
+                    doIt();
+                }
             }</script>
     </head>
-<body onload="if (window.location.hash) { console.log('profile['+window.location.hash+']');document.getElementById('id').value = window.location.hash }">
+<body onload="load()">
         <h1 id="title">CR2HTML</h1>
         <p id="body">
             <label for="id">CMD profile or component ID</label>
